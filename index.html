@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flashcard Project Checklist</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem;
+    }
+    .container {
+      background: rgba(255 255 255 / 0.1);
+      border-radius: 12px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+      padding: 2rem 2.5rem 3rem;
+      user-select: none;
+    }
+    h1 {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 0 8px rgba(0,0,0,0.3);
+      letter-spacing: 0.05em;
+    }
+    .progress-bar {
+      background: rgba(255 255 255 / 0.3);
+      border-radius: 10px;
+      height: 14px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      box-shadow: inset 0 0 6px rgba(0,0,0,0.15);
+    }
+    .progress {
+      background: linear-gradient(90deg, #7bff6e, #27ae60);
+      height: 100%;
+      width: 0%;
+      transition: width 0.5s ease;
+      border-radius: 10px;
+      box-shadow: 0 0 8px #27ae60;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      max-height: 550px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #4caf5077 transparent;
+    }
+    ul::-webkit-scrollbar {
+      width: 8px;
+    }
+    ul::-webkit-scrollbar-thumb {
+      background-color: #4caf50aa;
+      border-radius: 20px;
+    }
+    li {
+      background: rgba(255 255 255 / 0.15);
+      margin-bottom: 0.8rem;
+      border-radius: 8px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      transition: background 0.3s ease;
+      position: relative;
+    }
+    li:hover:not(.completed) {
+      background: rgba(255 255 255 / 0.3);
+    }
+    li.completed {
+      background: rgba(0, 255, 94, 0.2);
+      color: #0f5300;
+      text-decoration: line-through;
+      cursor: default;
+      box-shadow: 0 0 10px #27ae60cc inset;
+    }
+    li .checkbox {
+      width: 22px;
+      height: 22px;
+      border: 2.7px solid #d7d7d7;
+      border-radius: 6px;
+      margin-right: 14px;
+      position: relative;
+      flex-shrink: 0;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+      background: #fff;
+    }
+    li.completed .checkbox {
+      background: #27ae60;
+      border-color: #27ae60;
+      box-shadow: 0 0 10px #27ae60;
+    }
+    li.completed .checkbox::after {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 2px;
+      width: 7px;
+      height: 13px;
+      border-right: 3px solid white;
+      border-bottom: 3px solid white;
+      transform: rotate(45deg);
+      animation: checkmark 0.3s ease forwards;
+    }
+    @keyframes checkmark {
+      0% {width: 0; height: 0; opacity: 0;}
+      100% {width: 7px; height: 13px; opacity: 1;}
+    }
+    li span {
+      flex-grow: 1;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+    footer {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      text-align: center;
+      color: #d1d1d1;
+      user-select: none;
+    }
+    @media (max-width: 520px) {
+      .container {
+        padding: 1.5rem 1.8rem 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" role="main" aria-label="Flashcard Project Checklist">
+    <h1>Flashcard Project Checklist</h1>
+    <div class="progress-bar" aria-label="Progress Bar">
+      <div class="progress" id="progress"></div>
+    </div>
+    <ul id="task-list" role="list" tabindex="0" aria-live="polite" aria-relevant="additions removals"></ul>
+    <footer>Made with 💜 by LinSchmitz</footer>
+  </div>
+
+  <script>
+    const tasks = [
+      "Day 1: Define project goals and features",
+      "Day 1: Sketch UI design for main pages",
+      "Day 2: Setup React project with Vite or CRA",
+      "Day 2: Configure styling (TailwindCSS or CSS Modules)",
+      "Day 2: Setup Git repository and initial commit",
+      "Day 3: Create basic pages and routes with react-router",
+      "Day 3: Build Navbar with navigation links",
+      "Day 4: Build Flashcard component with flip state",
+      "Day 4: Style Flashcard with basic CSS",
+      "Day 5: Build FlashcardList and display test cards",
+      "Day 5: Add navigation between cards (Next/Prev)",
+      "Day 6: Build CardForm to add/edit cards",
+      "Day 6: Implement delete card functionality",
+      "Day 7: Implement useLocalStorage hook",
+      "Day 7: Save/load cards to/from LocalStorage",
+      "Day 8: Add shuffle/random review button",
+      "Day 8: Implement category filter for cards",
+      "Day 9: Add Dark/Light mode toggle",
+      "Day 9: Add animations with framer-motion",
+      "Day 9: Improve button styles and hover effects",
+      "Day 10: Add progress bar for review session",
+      "Day 10: Implement mark-as-learned feature",
+      "Day 11: Test on mobile and fix bugs",
+      "Day 11: Validate data saving and loading",
+      "Day 12: Deploy project to Vercel or Netlify",
+      "Day 12: Share project link with friends for testing",
+      "Day 13: Implement simple Spaced Repetition algorithm",
+      "Day 14: Add user authentication (Firebase or Supabase)",
+      "Day 14: Sync cards online for multiple devices",
+      "Day 15: Write a detailed README",
+      "Day 15: Create intro video and share on socials"
+    ];
+
+    const taskList = document.getElementById("task-list");
+    const progressBar = document.getElementById("progress");
+
+    // Load saved state from localStorage or init with false
+    let completed = JSON.parse(localStorage.getItem("flashcardChecklist")) || new Array(tasks.length).fill(false);
+
+    function updateProgress() {
+      const completedCount = completed.filter(Boolean).length;
+      const percentage = (completedCount / tasks.length) * 100;
+      progressBar.style.width = percentage + "%";
+      progressBar.setAttribute('aria-valuenow', Math.round(percentage));
+      progressBar.setAttribute('aria-valuemin', 0);
+      progressBar.setAttribute('aria-valuemax', 100);
+      progressBar.setAttribute('aria-label', `Progress: ${Math.round(percentage)} percent`);
+    }
+
+    function renderTasks() {
+      taskList.innerHTML = "";
+      tasks.forEach((task, i) => {
+        const li = document.createElement("li");
+        li.setAttribute("role", "listitem");
+        li.tabIndex = 0;
+        li.className = completed[i] ? "completed" : "";
+        li.setAttribute("aria-checked", completed[i]);
+        li.setAttribute("aria-live", "polite");
+        li.innerHTML = `<div class="checkbox"></div><span>${task}</span>`;
+        li.addEventListener("click", () => toggleTask(i));
+        li.addEventListener("keydown", (e) => {
+          if(e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggleTask(i);
+          }
+        });
+        taskList.appendChild(li);
+      });
+      updateProgress();
+    }
+
+    function toggleTask(index) {
+      completed[index] = !completed[index];
+      localStorage.setItem("flashcardChecklist", JSON.stringify(completed));
+      renderTasks();
+    }
+
+    renderTasks();
+  </script>
+</body>
+</html>
