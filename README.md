@@ -4,7 +4,7 @@
 A simple and visually appealing **project task checklist** built with **HTML, CSS, and JavaScript**.  
 This app helps you track your progress on a project step-by-step, with a progress bar and local storage to save your tasks.
 
-![Screenshot Example](./screenshot.png) <!-- Optional: Add a screenshot -->
+![Screenshot Example](./screenshot.png)  
 
 ## Features
 - Beautiful gradient UI with smooth animations
