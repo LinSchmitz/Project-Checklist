@@ -17,7 +17,7 @@ This app helps you track your progress on a project step-by-step, with a progres
 ## Tech Stack
 - **HTML5**
 - **CSS3 (with Google Fonts and animations)**
-- **Vanilla JavaScript**
+- **JavaScript**
 
 ## Getting Started
 
